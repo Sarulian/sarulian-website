@@ -2,10 +2,6 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    return 'Hey cutie pie'
-
 @app.route('/rachael')
 def rachael():
     return 'I love you!'
