@@ -8,7 +8,7 @@ def rachael():
 
 @app.route('/daisy')
 def cakes():
-    return 'I love you more ;)'
+    return render_template('daisy.html')
 
 @app.route('/')
 def index():
