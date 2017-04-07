@@ -7,7 +7,7 @@ def index():
     return render_template('index.html')
 
 @app.route('/css')
-def hello(name):
+def css():
     return render_template('page.html')
 
 if __name__ == '__main__':
