@@ -10,5 +10,9 @@ def index():
 def css():
     return render_template('page.html')
 
+@app.route('/dummy.html')
+def dummy():
+    return render_template('dummy.html')
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=4444)
