@@ -14,5 +14,9 @@ def css():
 def dummy():
     return render_template('dummy.html')
 
+@app.route('/boxes.html')
+def boxes():
+	return render_template('boxes.html')
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=4444)
