@@ -6,9 +6,9 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/css')
+@app.route('/css.html')
 def css():
-    return render_template('page.html')
+    return render_template('css.html')
 
 @app.route('/dummy.html')
 def dummy():
