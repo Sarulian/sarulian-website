@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import request
 import buzzfeedshopper
 
 app = Flask(__name__)
@@ -7,9 +8,14 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/recipe/<buzzfeedlink>')
-def recipe(buzzfeedlink):
+@app.route('/shopper')
+def recipe():
 	return render_template('shopper.html')
+
+@app.route('/handle_data', methods=['POST'])
+def handle_data():
+    buzzlink = request.form['buzzfeedlink']
+    return "You typed in %s" % buzzfeedlink
 
 
 if __name__ == '__main__':
