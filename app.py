@@ -9,7 +9,7 @@ def index():
 
 @app.route('/recipe/<buzzfeedlink>')
 def recipe(buzzfeedlink):
-	return 'Creating list for %s' % buzzfeedlink
+	return render_template('shopper.html')
 
 
 if __name__ == '__main__':
