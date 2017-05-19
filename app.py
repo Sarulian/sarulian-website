@@ -14,7 +14,7 @@ def recipe():
 @app.route('/handle_data', methods=['POST'])
 def handle_data():
     buzzlink = request.form['buzzfeedlink']
-    return "You typed in %s" % buzzfeedlink
+    return "You typed in %s" % buzzlink
 
 
 if __name__ == '__main__':
