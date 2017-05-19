@@ -1,5 +1,4 @@
 from flask import Flask, render_template
-import request
 import buzzfeedshopper
 
 app = Flask(__name__)
