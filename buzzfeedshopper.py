@@ -1,5 +1,5 @@
 def get_recipe_from_link(buzzlink):
-	
+
 	import requests, bs4
 
 	res = requests.get(buzzlink)
@@ -20,35 +20,39 @@ def get_recipe_from_link(buzzlink):
 	return recipe_list
 
 
-def send_to_wunderlist():
+def send_to_wunderlist(recipe_list):
 
 	import smtplib
+	import credentials
 
-    gmail_user = user
-    gmail_pwd = pwd
-    FROM = user
-    TO = recipient if type(recipient) is list else [recipient]
-    SUBJECT = subject
-    TEXT = body
+	gmail_user = credentials.login['email']
+	gmail_pwd = credentials.login['password']
 
-    # Prepare actual message
-    message = """From: %s\nTo: %s\nSubject: %s\n\n%s
-    """ % (FROM, ", ".join(TO), SUBJECT, TEXT)
-    try:
-        server = smtplib.SMTP("smtp.gmail.com", 587)
-        server.ehlo()
-        server.starttls()
-        server.login(gmail_user, gmail_pwd)
-        server.sendmail(FROM, TO, message)
-        server.close()
-        print 'successfully sent the mail'
-    except:
-        print "failed to send mail"
+	FROM = gmail_user
+	TO = 'me@wunderlist.com'
+
+	for item in recipe_list:
+		SUBJECT = item
+
+		# Prepare actual message
+		message = """From: %s\nTo: %s\nSubject: %s\n""" % (FROM, TO, SUBJECT)
+
+		try:
+			server = smtplib.SMTP('smtp.gmail.com', 587)
+			server.ehlo()
+			server.starttls()
+			server.login(gmail_user, gmail_pwd)
+			server.sendmail(FROM, TO, message)
+			server.close()
+			print('successfully sent the mail')
+		except:
+			print('failed to send mail')
 
 
 def main():
 
-	get_recipe_from_link('http://bzfd.it/2qnU88I')
+	recipe_list = get_recipe_from_link('http://bzfd.it/2qnU88I')
+	send_to_wunderlist(recipe_list)
 
 
 if __name__ == "__main__":
