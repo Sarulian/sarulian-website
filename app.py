@@ -14,7 +14,7 @@ def recipe():
 @app.route('/handle_data', methods=['POST'])
 def handle_data():
     buzzlink = request.form['buzzfeedlink']
-    recipe_list = buzzfeedshopper.get_recipies_from_link(buzzlink)
+    recipe_list = buzzfeedshopper.get_recipe_from_link(buzzlink)
     buzzfeedshopper(send_to_wunderlist(recipe_list))
     return "The recipe from %s has be added to your Wunderlist!" % buzzlink
 
