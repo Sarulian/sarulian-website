@@ -16,7 +16,7 @@ def get_recipe_from_link(buzzlink):
 	for element in recipe_elems:
 		recipe_list.append(element.text)
 
-	#print(recipe_list)
+	print(recipe_list)
 	return recipe_list
 
 
